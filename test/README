@@ -1,11 +1,51 @@
+# ESP-8266 Pendant for fluidnc:
 
-This directory is intended for PlatformIO Test Runner and project tests.
+### Hardware
 
-Unit Testing is a software testing method by which individual units of
-source code, sets of one or more MCU program modules together with associated
-control data, usage procedures, and operating procedures, are tested to
-determine whether they are fit for use. Unit testing finds problems early
-in the development cycle.
+- ESP8266 (lolin)
+- ST7789 240x240 display
+- Encoder Jog wheel 100 pulses per rev
+- Analog joystick
+- I2c Analog to digital converter for the joystick
+- 16 digital inputs via PCF8575
+- WS2812 for button backlighting
+- E-Stop button
 
-More information about PlatformIO Unit Testing:
-- https://docs.platformio.org/en/latest/advanced/unit-testing/index.html
+### Operation modes
+- JOG
+- DRO
+- ???
+
+### Buttons
+
+- Menu -> ??? shows modes ? (Jog, DRO, Job override)
+- Ok -> ??? (jog stop ?)
+- Home -> Run home routine, if an axis is selected, home that axis instead
+- Go to Zero -> moves towards origin point in currently selected axis / coordinate system
+- Cycle Start -> ???? can be used?
+- Zero Axis -> sets current position as origin for selected axis in the selected coordinate group (G54)
+- HOLD -> toggle hold / feed (change color to indicate state)
+- Probe Axis -> Probes currently selected axis
+- Air -> Toggles air assist 
+- Axis -> sets mode to axis selection -> use jog wheel|joystick to select -> ok to confirm
+- Multi -> sets mode to jog multiplier selectin -> iterates through multipliers
+
+- Switch -> disables jog wheel? sets jog mode?
+
+
+### run macros
+Macros are stored in the controller device flash, need to have a way to upload said macros
+
+- M3
+- M1
+- M2
+
+### Not completely defined buttons:
+  Menu - OK buttons -> ?
+  Cycle Start -> Starts current job
+
+## Jog Mode
+
+
+## DRO Mode
+  In DRO mode, the coordinate system is shown, feed rate 

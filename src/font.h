@@ -1,3 +1,5 @@
+#pragma once
+
 #include <Arduino.h>
 #ifndef FreeSansBold10pt7b_H
 #define FreeSansBold10pt7b_H

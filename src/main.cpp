@@ -1,34 +1,48 @@
-#include <NeoPixelBus.h>
+#include <Arduino.h>
+#include "pendant/pendant.h"
 
-#include "./inputs/inputs.h"
-#include "Arduino.h"
-#define STRIP_LEN 16
-#define REL 0.003921569f
+// void scanI2C() {
+//   byte error, address;
+//   int nDevices;
 
-NeoPixelBus<NeoGrbFeature, Neo800KbpsMethod> leds(STRIP_LEN, 15);
+//   Serial.println("Scanning...");
+
+//   nDevices = 0;
+//   for (address = 1; address < 127; address++) {
+//     // The i2c_scanner uses the return value of
+//     // the Write.endTransmisstion to see if
+//     // a device did acknowledge to the address.
+//     Wire.beginTransmission(address);
+//     error = Wire.endTransmission();
+
+//     if (error == 0) {
+//       Serial.print("I2C device found at address 0x");
+//       if (address < 16)
+//         Serial.print("0");
+//       Serial.print(address, HEX);
+//       Serial.println("  !");
+
+//       nDevices++;
+//     }
+//     else if (error == 4) {
+//       Serial.print("Unknown error at address 0x");
+//       if (address < 16)
+//         Serial.print("0");
+//       Serial.println(address, HEX);
+//     }
+//   }
+//   if (nDevices == 0)
+//     Serial.println("No I2C devices found\n");
+//   else
+//     Serial.println("done\n");
+// }
 
 void setup() {
   Serial.begin(115200);
-  Serial.println("PRE coso");
-  __INPUTS::begin();
-  // leds.Begin();
-  // leds.Show();
+  __PENDANT::init();
 }
 
 void loop() {
-  Serial.println("Main loop");
-  // static byte skew = 0;
-  // byte i = 0;
-  // for (i; i < STRIP_LEN; i++) {
-  //   // Serial.println(i);
-  //   // skew++;
-  //   // delay(100);
-  //   // leds.SetPixelColor(i, HsbColor((i + skew) * REL, 1, .04));
-  // }
+  __PENDANT::update();
 
-  // skew++;
-  // leds.Show();
-
-  __INPUTS::poll();
-  delay(1000);
 }
